@@ -15,7 +15,7 @@
 3. Execute go mod init.
 4. Execute go mod vendor.
 5. Adjust your config on `config.yaml` in `app/config/config.yaml`
-6. Migrate your table using `go run cmd/migrations/migrations.go go-drop-logistik:migrate --up`
+6. Migrate your table using `go run cmd/migrations/migrations.go go-articles:migrate --up`
 
 ## How to Add Migration
 
