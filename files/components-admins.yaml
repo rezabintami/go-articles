@@ -1,0 +1,70 @@
+components:
+  schemas:
+    # Admins Parameter
+    admins.ReqLogin:
+      properties:
+        email:
+          type: string
+          example: "admin@gmail.com"
+        password:
+          type: string
+          example: "admin"
+      required:
+        - email
+        - password
+      type: object
+
+    admins.ReqRegisterAgent:
+      properties:
+        name:
+          type: string
+          example: "Agent Surabaya"
+        email:
+          type: string
+          example: "agent1@gmail.com"
+        password:
+          type: string
+          example: "123123"
+        address:
+          type: string
+          example: "Jl. Kebon Kacang No.1"
+        balance:
+          type: number
+          example: 100000
+        latitude:
+          type: number
+          example: -7.2968
+        longitude:
+          type: number
+          example: 112.7904
+
+  examples:
+    ResAdminProfile:
+      value:
+        meta:
+          message: "success"
+        data:
+          id: 1
+          name: "Admin"
+          email: "admin@gmail.com"
+    ResAgentFetch:
+      value:
+        meta:
+          message: "success"
+        data:
+          agents:
+            - id: 1
+              name: "Agent Surabaya"
+              email: "agent1@gmail.com"
+              address: "Jl. Kebon Kacang No.1"
+              balance: 100000
+              latitude: -7.2968
+              longitude: 112.7904
+            - id: 2
+              name: "Agent Semarang"
+              email: "agent2@gmail.com"
+              address: "Jl. Kebon Kacang No.2"
+              balance: 100000
+              latitude: -7.2968
+              longitude: 112.7904
+          total: 2

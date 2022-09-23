@@ -1,0 +1,42 @@
+app:
+  env: "DEV"
+  debug: "true"
+  version: "1.0.0"
+  development_url: 
+  production_url: 
+server:
+  port: "8000"
+  timeout: "2"
+log:
+  level: debug
+mail:
+  default: 
+  host: 
+  port: 
+  username: 
+  password: 
+postgres:
+  host: "localhost"
+  port: "5432"
+  user: "postgres"
+  pass: "admin"
+  name: "go-articles"
+  ssl: disable
+  maxOpenConnection: "25"
+  maxIdleConnection: "25"
+mongo:
+  host: "localhost"
+  port: "27017"
+  name: "go-articles"
+redis:
+  host: localhost:6379
+  pass: ''
+jwt:
+  access_token: 
+  refresh_token: 
+  expired: "1"
+  reset_token: 
+  exp_secret: 72
+feature:
+  forgot_password:
+    path: /set-password

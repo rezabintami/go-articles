@@ -1,0 +1,5 @@
+{
+    "validateMessage": {
+        "phoneNumber": "The format of the mobile number is wrong, for example: + 628xxxxxxx"
+    }
+}

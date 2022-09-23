@@ -1,0 +1,10 @@
+.vscode
+config.json
+config.dev.yaml
+config.prod.yaml
+api.log
+.env
+config.dev.yaml
+config.prod.yaml
+config.yaml
+static

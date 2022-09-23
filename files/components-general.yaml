@@ -1,0 +1,39 @@
+components:
+  schemas:
+    # Helpers
+    helpers.JSONResponse:
+      properties:
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+        data:
+          type: object
+      type: object
+    
+    helpers.JSONResponseSuccess:
+      properties:
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "success"
+        data:
+          type: object
+          example: null
+          
+  examples:
+    # Tracking Response
+
+    # Users Response Login
+    ResLogin:
+      value:
+        meta:
+          message: "success"
+        data:
+          access_token: "c18ff11b7c6329f4fe2aca5e5191d6af108cfe9a34630464543bb8d77bad9f822fe69e10c3662f2f84df4ebd21a66602dde03f32f66bc72ad324a296b70d582d"
+          refresh_token: "1e9c6653d447d54c0de80c45ad0e72e762da4e7040a9047d3177ae99fd0778666e9e9c88021532024b2ed35205396ffde64b7f58c444a74b32dd6c01db57e55a"
+
+    

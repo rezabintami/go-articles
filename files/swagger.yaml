@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: go-articles API
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: go-articles API (Localhost)
+
+components:
+  schemas:
+    # Helpers
+    helpers.JSONResponse:
+      $ref: './components-general.yaml#components/schemas/helpers.JSONResponse'
+    helpers.JSONResponseSuccess:
+      $ref: './components-general.yaml#components/schemas/helpers.JSONResponseSuccess'
+    # Users
+    users.ReqLogin:
+      $ref: './components-users.yaml#components/schemas/users.ReqLogin'
+  
+  # securitySchemes:
+  #   Bearer:
+  #     type: http
+  #     scheme: bearer
+  #     bearerFormat: JWT
+    
+
+paths:
+# USERS
+  /auth/login:
+    post:
+      description: "Login user"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./components-general.yaml#/components/schemas/helpers.JSONResponse"
+              examples:
+                ResLogin:
+                  $ref: "./components-general.yaml#/components/examples/ResLogin"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./components-users.yaml#/components/schemas/users.ReqLogin"
+      summary: "Login user"
+      tags:
+        - Users
+  /user/profile:
+    get:
+      description: "Get user profile"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./components-general.yaml#/components/schemas/helpers.JSONResponse"
+              examples:
+                ResUserProfile:
+                  $ref: "./components-users.yaml#/components/examples/ResUserProfile"
+      summary: "Get user profile"
+      tags:
+        - Users

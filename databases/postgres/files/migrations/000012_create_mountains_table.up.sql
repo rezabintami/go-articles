@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS mountains (
+        id bigserial PRIMARY KEY,
+        name varchar(255) NOT NULL,
+        description TEXT NOT NULL,
+        about TEXT NOT NULL,
+        status varchar(255) NOT NULL,
+        latitude float NOT NULL,
+        longitude float NOT NULL,
+        province varchar(255) NOT NULL,
+        country varchar(255) NOT NULL,
+        type varchar(255) NOT NULL,
+        height integer NOT NULL,
+        difficult varchar(255) NOT NULL,
+        last_eruption timestamptz NOT NULL,
+        temperature_min float NOT NULL,
+        temperature_max float NOT NULL,
+        created_at timestamptz NOT NULL,
+        updated_at timestamptz NULL,
+        deleted_at timestamptz NULL
+    )

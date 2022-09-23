@@ -1,0 +1,4 @@
+ALTER TABLE 
+    articles
+ADD
+    CONSTRAINT fk_articles_users FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE;
