@@ -30,6 +30,8 @@ import (
 	_mountainRepo "go-articles/databases/postgres/repository/mountains"
 	_mountainUsecase "go-articles/modules/mountains"
 
+	_cronjobUsecase "go-articles/modules/cronjobs"
+
 	"github.com/go-redis/redis"
 )
 
@@ -68,12 +70,16 @@ func (route *ConfigurationPlugins) RoutePlugins() _routes.ControllerList {
 	imageUsecase := _imageUsecase.NewImageUsecase(imageRepo)
 	commentUsecase := _commentUsecase.NewCommentUsecase(commentRepo)
 	mountainUsecase := _mountainUsecase.NewMountainUsecase(mountainRepo)
+	cronjobUsecase := _cronjobUsecase.NewCronjobUsecase(articleUsecase)
 
 	//! CONTROLLER
 	userCtrl := _userController.NewUserController(userUsecase, imageUsecase)
 	articleCtrl := _articleController.NewArticleController(articleUsecase, imageUsecase, commentUsecase)
 	roleCtrl := _roleController.NewRoleController(roleUsecase)
 	mountainCtrl := _mountainController.NewMountainController(mountainUsecase)
+
+	// * Init Cron Job
+	go cronjobUsecase.RegisterCronjob()
 
 	return _routes.ControllerList{
 		JWTMiddleware:      configJWT.Init(),

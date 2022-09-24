@@ -4,7 +4,6 @@ import (
 	"log"
 	"os"
 
-	"go-articles/cronjob"
 	_mongoDriver "go-articles/databases/mongodb"
 	_postgreDriver "go-articles/databases/postgres"
 	_redisDriver "go-articles/databases/redis"
@@ -26,22 +25,22 @@ func main() {
 	log.Println("Port :", _config.GetConfiguration("postgres.port"))
 	log.Println("Name :", _config.GetConfiguration("postgres.name"))
 
-	// Init Postgresql
+	// * Init Postgresql
 	postgreDriver := _postgreDriver.Init()
 
-	// Init Mongodb
+	// * Init Mongodb
 	mongoDriver := _mongoDriver.Init()
 
-	// Init Redis
+	// * Init Redis
 	redisDriver := _redisDriver.InitialRedis(_config.GetConfiguration("redis.host"), _config.GetConfiguration("redis.pass"))
 
-	// Init Logger Mongodb
+	// * Init Logger Mongodb
 	logger.Init(mongoDriver)
 	
-	// Init Validation
+	// * Init Validation
 	helpers.InitValidation()
 
-	// Init Mail
+	// * Init Mail
 	mailConnection := helpers.MailConnection{
 		Host:     _config.GetConfiguration("mail.host"),
 		Port:     helpers.ConvertStringtoInt(_config.GetConfiguration("mail.port")),
@@ -57,12 +56,9 @@ func main() {
 
 	e := echo.New()
 
-	// Init Dependencies Plugin
+	// * Init Dependencies Plugin
 	route := plugins.RoutePlugins()
 	route.RouteRegister(e)
-
-	// Init Cron Job
-	go cronjob.RegisterCronjob()
 	
 	port := os.Getenv("PORT")
 	if port == "" {
