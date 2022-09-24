@@ -10,6 +10,7 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/uuid v1.3.0
+	github.com/jasonlvhit/gocron v0.0.1
 	github.com/labstack/echo/v4 v4.7.2
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/lib/pq v1.10.6

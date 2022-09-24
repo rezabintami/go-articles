@@ -13,7 +13,7 @@ type Domain struct {
 	ID          int
 	UserID      int
 	ImageID     *int
-	User		users.Domain
+	User        users.Domain
 	Role        roles.Domain
 	Image       images.Domain
 	Title       string
@@ -30,6 +30,7 @@ type Usecase interface {
 	Fetch(ctx context.Context, start, last, userId int, by, search, sort string) ([]Domain, int, error)
 	Delete(ctx context.Context, id int) error
 	Search(ctx context.Context, search string) ([]Domain, error)
+	Count(ctx context.Context) (int, error)
 }
 
 type Repository interface {
@@ -39,4 +40,5 @@ type Repository interface {
 	Fetch(ctx context.Context, start, last, userId int, by, search, sort string) ([]Domain, int, error)
 	Delete(ctx context.Context, id int) error
 	Search(ctx context.Context, search string) ([]Domain, error)
+	Count(ctx context.Context) (int, error)
 }

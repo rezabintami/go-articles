@@ -173,3 +173,14 @@ func (repository *postgreArticlesRepository) Search(ctx context.Context, search 
 
 	return result, nil
 }
+
+func (repository *postgreArticlesRepository) Count(ctx context.Context) (total int, err error) {
+	query := `SELECT COUNT(*) FROM "articles" WHERE "deleted_at" is NULL`
+	err = repository.db.QueryRowContext(ctx, query).Scan(&total)
+	if err != nil {
+		log.Println("[error] articles.repository.Count : failed to execute count articles query", err)
+		return 0, err
+	}
+
+	return total, err
+}

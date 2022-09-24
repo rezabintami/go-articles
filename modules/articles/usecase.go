@@ -95,3 +95,7 @@ func (usecase *ArticlesUsecase) Search(ctx context.Context, search string) ([]Do
 
 	return res, nil
 }
+func (usecase *ArticlesUsecase) Count(ctx context.Context) (int, error) {
+	count, err := usecase.articleRepository.Count(ctx)
+	return count, err
+}
